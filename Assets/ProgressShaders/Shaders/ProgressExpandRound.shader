@@ -21,6 +21,10 @@
 			#pragma vertex vert
 			#pragma fragment frag
 
+			#define PI 3.14159265f
+			#define PI_H 1.57079633f
+			#define PULSE(a, b, x) (step((a),(x)) - step((b),(x)))
+
 			struct appdata
 			{
 				float4 vertex : POSITION;
@@ -36,10 +40,6 @@
 			float _Progress;
 			fixed4 _FrameColor;
 			float _FrameWidth;
-
-			#define PI 3.14159265f
-			#define PI_H 1.57079633f
-			#define PULSE(a, b, x) (step((a),(x)) - step((b),(x)))
 
 			v2f vert(appdata v)
 			{

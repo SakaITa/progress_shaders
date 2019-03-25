@@ -20,6 +20,10 @@
 			#pragma vertex vert
 			#pragma fragment frag
 
+			#define PI 3.14159265f
+			#define PI_H 1.57079633f
+			#define PULSE(a, b, x) (step((a),(x)) - step((b),(x)))
+
 			struct appdata
 			{
 				float4 vertex : POSITION;
@@ -35,10 +39,6 @@
 			float _Progress;
 			float _LineWidth;
 
-			#define PI 3.14159265f
-			#define PI_H 1.57079633f
-			#define PULSE(a, b, x) (step((a),(x)) - step((b),(x)))
-
 			v2f vert(appdata v)
 			{
 				v2f o;
@@ -53,11 +53,11 @@
 				fixed4 col = _Color;
 
 				// 輪を描く
-				float a = PULSE(0.5 * (1.0 - _LineWidth) , 0.5,distance(center, i.uv));
+				float a = PULSE(0.5 * (1.0 - _LineWidth) , 0.5, distance(center, i.uv));
 
 				// 角度制限
 				float2 pos = (i.uv - center) * 2.0;
-				float angle = -(atan2(pos.y, pos.x) - PI_H) / (PI * 2);
+				float angle = -(atan2(pos.y, pos.x) - PI_H) / (PI * 2.0);
 				angle = angle < 0 ? angle + 1.0 : angle;
 				a *= step(angle, _Progress);
 

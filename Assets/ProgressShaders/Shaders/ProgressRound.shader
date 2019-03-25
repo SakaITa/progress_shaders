@@ -56,7 +56,7 @@ Shader "Progress/Round" {
 
 				// äpìxêßå¿
 				float2 pos = (i.uv - center) * 2.0;
-				float angle = -(atan2(pos.y, pos.x) - PI_H) / (PI * 2);
+				float angle = -(atan2(pos.y, pos.x) - PI_H) / (PI * 2.0);
 				angle = angle < 0 ? angle + 1.0 : angle;
 				a *= step(angle, _Progress);
 

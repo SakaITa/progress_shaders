@@ -22,6 +22,9 @@
 			#pragma vertex vert
 			#pragma fragment frag
 
+			#define PULSE(a, b, x) (step((a),(x)) - step((b),(x)))
+			#define RPULSE(a, b, x) (step((x),(a)) + step((b),(x)))
+
 			struct appdata
 			{
 				float4 vertex : POSITION;
@@ -39,9 +42,6 @@
 			float _FrameWidthU;
 			float _FrameWidthV;
 
-			#define PULSE(a, b, x) (step((a),(x)) - step((b),(x)))
-			#define RPULSE(a, b, x) (step((x),(a)) + step((b),(x)))
-
 			v2f vert(appdata v)
 			{
 				v2f o;
@@ -56,7 +56,7 @@
 				float af = RPULSE(_FrameWidthU, 1.0 - _FrameWidthU, i.uv.x) || RPULSE(_FrameWidthV, 1.0 - _FrameWidthV, i.uv.y);
 				
 				// 線を書く
-				float al = step(i.uv.x - _FrameWidthU, _Progress * (1 - _FrameWidthU * 2)) * (1 - af);
+				float al = step(i.uv.x - _FrameWidthU, _Progress * (1.0 - _FrameWidthU * 2.0)) * (1.0 - af);
 
 				fixed4 col = af * _FrameColor + al * _Color;
 				return col;
