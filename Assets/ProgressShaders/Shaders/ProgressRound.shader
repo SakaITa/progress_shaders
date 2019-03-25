@@ -60,7 +60,7 @@ Shader "Progress/Round" {
 				angle = angle < 0 ? angle + 1.0 : angle;
 				a *= step(angle, _Progress);
 
-				col.a = a;
+				col.a *= a;
 				return col;
 			}
 			ENDCG
