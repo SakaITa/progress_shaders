@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace ProgressShaders
+namespace ProgressHelper
 {
     [CustomEditor(typeof(ProgressView))]
     public class ProgressSampler : Editor

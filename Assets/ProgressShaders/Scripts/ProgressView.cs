@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ProgressShaders
+namespace ProgressHelper
 {
     public class ProgressView : MonoBehaviour
     {
